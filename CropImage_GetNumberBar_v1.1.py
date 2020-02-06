@@ -117,10 +117,11 @@ def LocateVerticalPoint_2(imageIn):
     print(' >>> ', pStartCut, ' :: ', pEndCut)
     return pStartCut, pEndCut
 
-series='O1'
+series='O'
 #Specify Path to store converted image
 image_path_output =r'C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/out_image/'
 count=0
+count_file=0
 
 
 image_path=r"C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/image/"
@@ -130,6 +131,8 @@ for file in glob.glob(path):
     files.append(file)
 
 for n in files:
+    count_file+=1
+    count=0
     cropPoint=LocateNumber(n)
     cropList=list(cropPoint)
     #print(n, ' CP :', cropList)
@@ -150,6 +153,7 @@ for n in files:
         #print(' : ',x1,' : ',x2,' : ', y1,' : ', y2)
         area=(x1,y1,x2,y2)
         cropped_img=image.crop(area)
+        
         #cropped_img.show()
 
         im_widthC, im_heightC = cropped_img.size
@@ -164,7 +168,7 @@ for n in files:
         area2=(x1,y1,x2,y2)
         cropped_img_C=cropped_img.crop(area2)
         count=count+1
-        filename=image_path_output+series+'-'+str(count)+'.jpg'
+        filename=image_path_output+series+'-'+str(count_file)+'-'+str(count)+'.jpg'
         cropped_img_C.save(filename, quality=100)
 
         #cropped_img_C.show()
