@@ -158,7 +158,6 @@ for n in files:
         cropped_img=image.crop(area)
         
         #cropped_img.show()
-
         im_widthC, im_heightC = cropped_img.size
         Top, Bottom=LocateVerticalPoint_2(cropped_img)
         print(' >>> ',Top, ':: ',Bottom)
