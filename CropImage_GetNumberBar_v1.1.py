@@ -100,6 +100,7 @@ def LocateVerticalPoint_2(imageIn):
     print(' >> ', pStartRange, ' == ', pEndRange)
     pStartCut=0
     pEndCut=plen-1
+
     for n in range(0,plen):
         if(proj[n]<pStartRange[0] or proj[n]>pStartRange[1]):
             pStartCut=n
@@ -111,9 +112,9 @@ def LocateVerticalPoint_2(imageIn):
             pEndCut=n
             print(' pEndCut >>> ', pEndCut)
             break
-    #plt.plot(proj)
+    plt.plot(proj)
     #plt.plot(peaks, pin[peaks], "x")
-    #plt.show()
+    plt.show()
     print(' >>> ', pStartCut, ' :: ', pEndCut)
     return pStartCut, pEndCut
 
@@ -124,7 +125,7 @@ count=0
 count_file=0
 
 
-image_path=r"C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/image/"
+image_path=r"C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/image2/"
 path=image_path+"*.jpg"
 files = []
 for file in glob.glob(path):
@@ -142,14 +143,16 @@ for n in files:
     #im_height, im_width, channels = image.shape
     #print(' image : ',type(image),' ==> ',im_width,':',im_height)
 
-    Top, Bottom=LocateVerticalPoint(n)
+    #Top, Bottom=LocateVerticalPoint(n)
 
     ilen=len(cropList)
     for cp in range(0,ilen-1):
         x1=cropList[cp]
         x2=cropList[cp+1]
-        y1=0
-        y2=im_height
+
+        # Remove first and last row pixels to assure all the unwanted top and bottom areas are removed
+        y1=0+1
+        y2=im_height-1
         #print(' : ',x1,' : ',x2,' : ', y1,' : ', y2)
         area=(x1,y1,x2,y2)
         cropped_img=image.crop(area)
@@ -171,8 +174,8 @@ for n in files:
         filename=image_path_output+series+'-'+str(count_file)+'-'+str(count)+'.jpg'
         cropped_img_C.save(filename, quality=100)
 
-        #cropped_img_C.show()
-        #plt.show()
+        cropped_img_C.show()
+        plt.show()
 
 
 
