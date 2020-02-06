@@ -32,7 +32,7 @@ def LocateNumber(path):
     dataarray = np.asarray(plist)
 
     # Fit data with polynomail order 30th
-    zp = np.polyfit(parray, dataarray, 30) 
+    zp = np.polyfit(parray, dataarray, 35) 
     p = np.poly1d(zp)
     pin=p(pindex)    
     _ = plt.plot(pindex, dataarray, '.', pindex, pin, '-')
@@ -112,9 +112,9 @@ def LocateVerticalPoint_2(imageIn):
             pEndCut=n
             print(' pEndCut >>> ', pEndCut)
             break
-    plt.plot(proj)
+    #plt.plot(proj)
     #plt.plot(peaks, pin[peaks], "x")
-    plt.show()
+    #plt.show()
     print(' >>> ', pStartCut, ' :: ', pEndCut)
     return pStartCut, pEndCut
 
