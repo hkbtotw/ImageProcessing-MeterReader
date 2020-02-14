@@ -120,12 +120,15 @@ def LocateVerticalPoint_2(imageIn):
 
 series='O'
 #Specify Path to store converted image
-image_path_output =r'C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/out_image/'
+#image_path_output =r'C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/out_image/'
+image_path_output =r'C:/Users/70018928/Documents/Project2020/TruckOdometer/20200214/Output_Digit/6D/Digits/'
+
 count=0
 count_file=0
 
 
-image_path=r"C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/image2/"
+#image_path=r"C:/Users/70018928/Documents/Project2020/TruckOdometer/20200203/Test_SSM_1/image2/"
+image_path=r"C:/Users/70018928/Documents/Project2020/TruckOdometer/20200214/Output_Digit/6D/"
 path=image_path+"*.jpg"
 files = []
 for file in glob.glob(path):
@@ -170,11 +173,11 @@ for n in files:
         area2=(x1,y1,x2,y2)
         cropped_img_C=cropped_img.crop(area2)
         count=count+1
-        filename=image_path_output+series+'-'+str(count_file)+'-'+str(count)+'.jpg'
+        filename=image_path_output+series+'-D2-'+str(count_file)+'-'+str(count)+'.jpg'
         cropped_img_C.save(filename, quality=100)
 
-        cropped_img_C.show()
-        plt.show()
+        #cropped_img_C.show()
+        #plt.show()
 
 
 
